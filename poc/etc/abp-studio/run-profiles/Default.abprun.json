@@ -1,0 +1,18 @@
+﻿{
+  "applications": {
+    "AbpSolution1.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44335",
+      "path": "../../../src/AbpSolution1.Web/AbpSolution1.Web.csproj",
+      "kubernetesService": ".*-web$",
+      "healthCheckEndpoint": "/health-status",
+      "healthUiEndpoint": "/health-ui",
+      "execution": {
+        "order": 2
+      }
+    }
+  },
+  "containers": {
+    "serviceName": "AbpSolution1-Containers",
+  }
+}

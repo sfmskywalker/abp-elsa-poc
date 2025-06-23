@@ -1,0 +1,10 @@
+﻿{
+  "packages": {
+    "BookActivities": {
+      "path": "BookActivities/BookActivities.abppkg"
+    },
+    "BookActivities.Contracts": {
+      "path": "BookActivities.Contracts/BookActivities.Contracts.abppkg"
+    }
+  }
+}
