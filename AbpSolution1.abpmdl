@@ -1,0 +1,80 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.2.0",
+      "isInstalled": true
+    },
+    "ElsaWorkflows": {
+      "path": "modules/elsaworkflows/ElsaWorkflows.abpmdl",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {}
+    }
+  },
+  "packages": {
+    "AbpSolution1.Application": {
+      "path": "src/AbpSolution1.Application/AbpSolution1.Application.abppkg",
+      "folder": "src"
+    },
+    "AbpSolution1.Domain.Shared": {
+      "path": "src/AbpSolution1.Domain.Shared/AbpSolution1.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "AbpSolution1.Application.Contracts": {
+      "path": "src/AbpSolution1.Application.Contracts/AbpSolution1.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "AbpSolution1.HttpApi": {
+      "path": "src/AbpSolution1.HttpApi/AbpSolution1.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "AbpSolution1.HttpApi.Client": {
+      "path": "src/AbpSolution1.HttpApi.Client/AbpSolution1.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "AbpSolution1.Web": {
+      "path": "src/AbpSolution1.Web/AbpSolution1.Web.abppkg",
+      "folder": "src"
+    },
+    "AbpSolution1.EntityFrameworkCore": {
+      "path": "src/AbpSolution1.EntityFrameworkCore/AbpSolution1.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "AbpSolution1.DbMigrator": {
+      "path": "src/AbpSolution1.DbMigrator/AbpSolution1.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "AbpSolution1.Domain": {
+      "path": "src/AbpSolution1.Domain/AbpSolution1.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}
