@@ -27,7 +27,6 @@ public class AbpSolution1ApplicationModule : AbpModule
     {
         context.Services.ConfigureElsa(elsa =>
         {
-            elsa.AddVariableTypeAndAlias<Book>("Book", "Books");
             elsa.AddVariableTypeAndAlias<BookDto>("BookDto", "Books");
             elsa.AddActivitiesFrom<AbpSolution1ApplicationModule>();
         });

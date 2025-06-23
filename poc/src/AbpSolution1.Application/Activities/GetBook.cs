@@ -8,6 +8,7 @@ using Elsa.Workflows.Attributes;
 using Elsa.Workflows.Models;
 using JetBrains.Annotations;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.ObjectMapping;
 
 namespace AbpSolution1.Activities;
 
@@ -19,7 +20,7 @@ namespace AbpSolution1.Activities;
 )]
 [FlowNode("Found", "Not Found")]
 [UsedImplicitly]
-public class GetBook : CodeActivity<Book>
+public class GetBook : CodeActivity<BookDto>
 {
     [Input(Description = "The ID of the book to get.")] public Input<Guid> BookId { get; set; } = null!;
 
@@ -42,7 +43,9 @@ public class GetBook : CodeActivity<Book>
             return;
         }
 
-        context.SetResult(book);
+        var mapper = context.GetRequiredService<IObjectMapper>();
+        var bookDto = mapper.Map<Book, BookDto>(book);
+        context.SetResult(bookDto);
         await context.CompleteActivityWithOutcomesAsync("Found");
     }
 }
