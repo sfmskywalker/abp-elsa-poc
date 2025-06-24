@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using AbpSolution1.Books;
 using AbpSolution1.Stimuli;
+using Elsa.Expressions.Models;
 using Elsa.Extensions;
 using Elsa.Workflows;
 using Elsa.Workflows.Attributes;
@@ -28,17 +29,13 @@ public class BookCreated : Trigger<BookDto>
             return;
         }
         
-        var bookType = BookType.GetOrDefault(context);
-        var stimulus = new BookCreatedStimulus();
+        var stimulus = CreateStimulus(context.ExpressionExecutionContext);
         context.CreateBookmark(stimulus, ExecuteInternalAsync, includeActivityInstanceId: false);
     }
 
     protected override object GetTriggerPayload(TriggerIndexingContext context)
     {
-        return new BookCreatedStimulus
-        {
-            //BookType = BookType.GetOrDefault(context)
-        };
+        return CreateStimulus(context.ExpressionExecutionContext);
     }
 
     private async ValueTask ExecuteInternalAsync(ActivityExecutionContext context)
@@ -46,5 +43,11 @@ public class BookCreated : Trigger<BookDto>
         var book = context.GetWorkflowInput<BookDto>();
         context.SetResult(book);
         await context.CompleteActivityAsync();
+    }
+    
+    private BookCreatedStimulus CreateStimulus(ExpressionExecutionContext context)
+    {
+        var bookType = BookType.GetOrDefault(context);
+        return new(bookType);
     }
 }

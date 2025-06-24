@@ -7,6 +7,7 @@ using Elsa.Workflows.Attributes;
 using Elsa.Workflows.Models;
 using JetBrains.Annotations;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.EventBus.Local;
 using Volo.Abp.ObjectMapping;
 
 namespace AbpSolution1.Activities;
@@ -35,9 +36,11 @@ public class CreateBook : CodeActivity<BookDto>
             PublishDate = PublishDate.Get(context),
             Price = Price.Get(context)
         };
+        var localEventBus = context.GetRequiredService<ILocalEventBus>();
         var createdBook = await bookService.InsertAsync(book);
         var mapper = context.GetRequiredService<IObjectMapper>();
         var bookDto = mapper.Map<Book, BookDto>(createdBook);
+        await localEventBus.PublishAsync(new BookCreatedEvent(bookDto));
         context.SetResult(bookDto);
     }
 }

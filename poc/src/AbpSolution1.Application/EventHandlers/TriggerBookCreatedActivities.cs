@@ -19,12 +19,12 @@ public class TriggerBookCreatedActivities(IStimulusDispatcher stimulusDispatcher
         await stimulusDispatcher.SendAsync(new()
         {
             ActivityTypeName = ActivityTypeNameHelper.GenerateTypeName<BookCreated>(),
-            Stimulus = new BookCreatedStimulus(),
+            Stimulus = new BookCreatedStimulus(eventData.Book.Type),
             Metadata = new()
             {
                 Input = new Dictionary<string, object>
                 {
-                    [nameof(BookCreatedStimulus)] = eventData.Book,
+                    [nameof(BookDto)] = eventData.Book,
                 }
             }
         });
